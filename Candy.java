@@ -1,3 +1,7 @@
+import java.awt.*;
+import java.util.*;
+import javax.swing.*;
+
 public class Candy{
     private String color;
     private ImageIcon image;
@@ -6,11 +10,11 @@ public class Candy{
     private Map<Location,Candy>candyScreen;
     private Game game;
     private String[] colors = {"red", "blue", "green", "orange", "yellow"};
-    public static final COLOR_NUM = 5;
+    public static final int COLOR_NUM = 5;
     
     
     public Candy(String color, Location loc, Map<Location,Candy>candyScreen , Game game){
-        this.color = color;
+        this.color = colors[color]
         this.loc = loc;
         this.candyScreen = candyScreen;
         this.game = game;
@@ -22,6 +26,10 @@ public class Candy{
         return color; 
     }
     
+    public String setColor(String col){
+        color = col;
+        image = new ImageIcon(color +".jpg");
+    }
     public ImageIcon getImage(){
         return image;
     }
