@@ -81,12 +81,9 @@ public class Game implements ActionListener {
         searchMatch();
     }
     
-    public void makeCandies()
-    {
-        for (int row = 0; row < height; row++)
-        {
-            for(int col = 0; col < width; col++)
-            {
+    public void makeCandies() {
+        for (int row = 0; row < height; row++) {
+            for(int col = 0; col < width; col++) {
                 Location loc = new Location(row, col);
                 int color = (int)(Math.random() * Candy.NUM_COLORS);
                 Candy candy = new Candy(color, loc, candyScreen, this);
