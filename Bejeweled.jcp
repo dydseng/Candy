@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+	<settings>
+		<label>Jewels</label>
+		<root_path>\</root_path>
+		<output_path>\</output_path>
+		<source_path>\</source_path>
+		<jdkprofile_ref/>
+		<compiler_ref/>
+		<ant_ref/>
+	</settings>
+	<ant_events/>
+	<run_items/>
+	<runtimes>
+		<runtime>
+			<label>&lt;Default&gt;</label>
+			<application_ref/>
+			<applet_ref/>
+			<debugger_ref/>
+			<param/>
+			<run>Jewels</run>
+			<verify>true</verify>
+		</runtime>
+	</runtimes>
+	<libraries/>
+	<files>
+		<include>
+			<fileitem>
+				<path>DecayingTimer.java</path>
+			</fileitem>
+			<fileitem>
+				<path>Jewel.java</path>
+			</fileitem>
+			<fileitem>
+				<path>Jewels.java</path>
+			</fileitem>
+			<fileitem>
+				<path>Spot.java</path>
+			</fileitem>
+		</include>
+		<exclude>
+			<fileitem>
+				<path>MovingImage.java</path>
+			</fileitem>
+		</exclude>
+	</files>
+	<tasks/>
+</project>

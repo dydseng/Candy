@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workspace>
+	<settings>
+		<label>Bejeweled</label>
+	</settings>
+	<users>
+		<user>
+			<path>Bejeweled.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>Bejeweled.jcp</path>
+		</project>
+	</projects>
+</workspace>
