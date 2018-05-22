@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Game implements ActionListener {
     private JFrame frame;
@@ -26,7 +27,7 @@ public class Game implements ActionListener {
         selected = null;
         /* put in extra graphical stuff later. */
     }
-    
+  
     public void moveMade(ActionEvent e) {
         if(!matched.isEmpty()) {
             crushCandy();
@@ -36,9 +37,8 @@ public class Game implements ActionListener {
             int row = in.nextInt();
             int col = in.nextInt();
             
-            if(selected == null) {
+            if(selected == null)
                 selected = new Location(row, col);
-            }
             else {
                 Location other = new Location(row, col);
                 if(other.isAdjacentTo(selected)) {
@@ -50,13 +50,13 @@ public class Game implements ActionListener {
                     change(other, selected);
                     selected = null;
                 }
-                else {
+                else
                     selected = other;
-                }
             }
         }
     }
     
+    /* Adds candies to matched (candies that need to be removed. */
     public void addToMatched (Candy candy) {
         if(candy != null)
             matched.add(candy);
@@ -66,36 +66,83 @@ public class Game implements ActionListener {
         for(int i = matched.size() - 1; i >= 0; i--)
             matched.remove(i);
         }
-      
+    
+    /* Sets up the screen by putting a new candy at each location. */
     public void initialize() {
         for(int row = 0; row < height; row++) {
             for(int col = 0; col < width; col++) {
+                /* Sets a random color candy at a location. */
                 Location loc = new Location(row, col);
                 int color = (int)(Math.random() * Candy.NUM_COLORS);
                 Candy candy = new Candy(color, loc, candyScreen, this);
+                
+                /* Removes whatever was there before and adds a candy and button. */
                 candyScreen.remove(loc);
                 candyScreen.put(loc, candy);
                 updateButton(loc);
             }
         }
+        /* WRITE THIS METHOD:
+         * 
+         * 
+         * 
+         */
+        
+        /* Searches for matched candy from a preset screen. */
         searchMatch();
     }
     
-    public void makeCandies() {
-        for (int row = 0; row < height; row++) {
-            for(int col = 0; col < width; col++) {
+    /* Puts a button beneath each candy. */
+    public void makeButtons(){
+        for (int row = 0; row < height; row++){
+            for(int col = 0; col < width; col++){
+                /* Put a new, randomized candy in each location on the screen. */
                 Location loc = new Location(row, col);
                 int color = (int)(Math.random() * Candy.NUM_COLORS);
                 Candy candy = new Candy(color, loc, candyScreen, this);
                 candyScreen.put(loc, candy);
+                
+                /* Set up botton to be put in a location. */
                 JButton button = new JButton();
                 button.setIcon(candy.getImage());
                 button.setBackground(Color.WHITE);
+                
+                /* Actually put botton there. */
                 buttonScreen.put(loc, button);
-                /* not done here */
+                buttons.add(button);
+                button.addActionListener(this);
             }
         }
     }
+    
+    public void change(Location one, Location two) {
+        /* Swap the colors of the two candies. */
+        String temp = candyScreen.get(one).getColor();
+        candyScreen.get(one).getColor(candyScreen.get(two).getColor());
+        candyScreen.get(one).setColor(temp);
+        
+        /* Update buttons of two new ones. */
+        updateButton(one);
+        updateButton(two);
+        
+        /*
+         * 
+         * DO WE NEED CHANGE()? 
+         * (used if nothing happens, reverses actions above)
+         * 
+         * 
+         */
+    }
+    
+    public void updateButton(Location loc) {
+        Candy candy = candyScreen.get(candy);
+        if(candy == null)
+            buttonScreen.get(loc).setIcon(null);
+        else {
+            buttonScreen.get(loc).setIcon(candy.getIcon());
+        }
+    }
+    
     public void searchMatch() {
         
     }
